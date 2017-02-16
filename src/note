@@ -1,0 +1,135 @@
+<?php
+
+class NumbersToWords
+{
+    private $user_input;
+
+    function __construct($numbers)
+    {
+        $this->user_input = $numbers;
+    }
+
+
+    function numbers_to_words(){
+
+        if(digit == 1  "zero")
+        otherwise ->
+        $ones_array = array(
+            "0" = '';
+            "1" => "one",
+            "2" => "two",
+            "3" => "three",
+            "4" => "four",
+            "5" => "five",
+            "6" => "six",
+            "7" => "seven",
+            "8" => "eight",
+            "9" => "nine"
+        );
+
+
+        grab userinput 34789
+            -> str_split = (3,4,7, 8,9);    digit%3 != 0
+            (0, 3, 4, 7, 8, 9)
+
+            -> ( [034][789])
+
+
+            -> rversearray = (9, 8, 7, 4, 3)
+            -> $something = array to string (98743)
+            str_spit($something, 3) (987, 43)
+            reverse array ()
+        output = [9,8,7][3,4]
+
+        input = 0    "zero" (1 digit)
+        input = 3    ("Three" (0)) 1 digit
+        input = 24   ("Twenty"(0) "Four"(1)) 2 digit
+        input = 211
+            original:   two(hundred) + ten + one
+            exception   if the arraycount -2 == "1" -> use eleven ~nineteen
+
+        input 12,315:
+
+        input = 380  ("Three")(0) "Hundred"(1) "Eight"(2) "y" (3)
+        input = 386  [("Three"(0) "Hundred"(1) "Eight"(2) "y" (3) "Six"(4))]   --user count 3 digit
+
+        input = 100
+          one("hundred")+zero() + zero(omit if digit is more than 1)
+
+        input = 387 (3digit)
+        three(+"hundred") + eighty(unique)+seven
+
+        input = 8921 (4digit)
+        eight(thousand) + nine(+hundred)+twenty(unique)+ one
+
+        input = 8920 (4digit)     (8, 9, 2, 0)  for($i=4; $i<0; $i--)
+        eight(thousand)+nine(hundred)+ twenty(unique) + zero(omit if digit is more than 1)
+
+
+        input = 12000
+        zero
+
+        input = 2331  ("Two"(0) "Thousand"(1) ["Three"(2) "Hundred"(3) "Thirty"(4) "One"(5))] 4digit
+        input = 38,687 ("Thirty"(0) "Eight"(1) "Thousand"(2) "Six"(3) "Hundred"(4) "Eighty"(5) "Seven"(6)) --5digit
+        input = 38,6871 ("Three"(0) "hundred"(1) "Eight"(1) "y"(2) "Thousand"(2) "Six"(3) "Hundred"(4) "Eighty"(5) "Seven"(6)) --digit
+
+        $tens_array = array(
+            "2" => "twenty",
+            "3" => "thirty",
+            "4" => "fourty",
+            "5" => "fifty",
+            "6" => "sixty",
+            "7" => "seventy",
+            "8" => "eighty",
+            "9" => "ninety"
+        );
+        $unique_array = array(
+            "10" => "ten",
+            "11" => "eleven",
+            "12" => "twelve",
+            "13" => "thirteen",
+            "14" => "fourteen",
+            "15" => "fifteen",
+            "16" => "sixteen",
+            "17" => "seventeen",
+            "18" => "eighteen",
+            "19" => "nineteen",
+            "20" => "twenty",
+            "30" => "thirty",
+            "40" => "fourty",
+            "50" => "fifty",
+            "60" => "sixty",
+            "70" => "seventy",
+            "80" => "eighty",
+            "90" => "ninety"
+        );
+        $large_numbers_array = array(
+            "3" => "hundred",
+            "4" => "thousand"
+            "7" => "million"
+            "10" =>
+            1,000,000,000
+        );
+        $thousands_array = array(
+
+        );
+
+        //userinput = 3
+        str_split (userinput) // "3"
+
+        //userinput = 45
+        str_split (userinput) // (4,5)
+
+        userinput = 384
+        $user_array = str_split(userinput)//("3","8","4")
+        $user_count = count($user_array);
+
+        $large_numbers_array(count(userinput)) +
+
+
+
+        return $day;
+
+    }
+
+}
