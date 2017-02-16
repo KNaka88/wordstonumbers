@@ -53,6 +53,14 @@ class NumbersToWords
             "80" => "eighty",
             "90" => "ninety"
         );
+        $concat_array = array(
+             "1" => "", //hundred
+             "2" => " thousand ",
+             "3" => " million ",
+             "4" => " billion ",
+             "5" => " trillion ",
+             "6" => " quadrillion ",
+        );
         $return_words = "";
         $user_input = $this->user_input;  //3444
         $split_array = str_split($user_input); //(3,4,4,4)
@@ -67,21 +75,55 @@ class NumbersToWords
         $countDigitSet = count($split_array);
 
         $number_chunk_array = array_chunk($split_array, 3);
-        //[0, 0, 3], [4, 4, 4]
+
+
+
 
         for($i=0; $i<count($number_chunk_array); $i++){
-            
-            for($j=0; $j<count($number_chunk_array[$i]); $j++){
-                if($j == 0 && $number_chunk_array[$i][$j] != "0" ){
-                    $return_words .= $ones_array[$number_chunk_array[$i][$j]] . "hundred";
-                }elseif($j == 1){
-                    $return_words .= $tens_array[$number_chunk_array[$i][$j]] . " ";
-                }elseif($j == 2){
-                    $return_words .= $ones_array[$number_chunk_array[$i][$j]];
-                }
-            }
-        }
 
+                //More than thousands
+                $return_words .= $concat_array[$i+1];
+
+                //Hundreds
+                if($number_chunk_array[$i][0] != "0" ){
+                    $return_words .= $ones_array[$number_chunk_array[$i][0]] . " hundred and ";
+                }
+
+
+                //Tens and ones
+                if($number_chunk_array[$i][1] == 0){
+                    //do nothing
+
+
+                }else if ($number_chunk_array[$i][1] == 1) {
+                    //eleven - nineteen
+
+                    //get 11 - 19
+                    $two_digit = $number_chunk_array[$i][1] . $number_chunk_array[$i][2];
+
+                    //pass the 11-19 as Key and get string Value(eleven - nineteen)
+                    $return_words .= $unique_array["$two_digit"];
+
+                }else{
+                    //$tens: twenty ... ninety
+                    $tens = $number_chunk_array[$i][1];
+
+                    //$ones: one ... nine
+                    $ones = $number_chunk_array[$i][2];
+
+                    $return_words .= $tens_array[$tens] ." ";
+                    $return_words .= $ones_array[$ones];
+                }
+
+                //ones:
+                if($number_chunk_array[$i][0] == 0 && $number_chunk_array[$i][1] == 0 && $number_chunk_array[$i][2] == 0 ){
+                    $return_words .= "";
+                }else if ($number_chunk_array[$i][0] == 0 && $number_chunk_array[$i][1] == 0){
+                    $ones = $number_chunk_array[$i][2];
+                    $return_words .= $ones_array[$ones];
+                }
+        }
+        echo $return_words;
         return $return_words;
         //
         // 444
