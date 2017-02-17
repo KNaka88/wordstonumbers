@@ -44,14 +44,6 @@ class NumbersToWords
             "17" => "seventeen",
             "18" => "eighteen",
             "19" => "nineteen",
-            "20" => "twenty",
-            "30" => "thirty",
-            "40" => "fourty",
-            "50" => "fifty",
-            "60" => "sixty",
-            "70" => "seventy",
-            "80" => "eighty",
-            "90" => "ninety"
         );
         $concat_array = array(
              "1" => "", //hundred
@@ -60,6 +52,12 @@ class NumbersToWords
              "4" => " billion ",
              "5" => " trillion ",
              "6" => " quadrillion ",
+             "7" => " pentillion ",
+             "8" => " sextillion ",
+             "9" => " septillion ",
+             "10" => " octillion ",
+             "11" => " nonillion ",
+             "12" => " decillion "
         );
         $return_words = "";
         $user_input = $this->user_input;  //3444
@@ -80,8 +78,7 @@ class NumbersToWords
         $digitSet = count($number_chunk_array);
 
         for($i=0; $i<count($number_chunk_array); $i++){
-
-
+                $check_if_not_zero = true;
                 //Hundreds
                 if($number_chunk_array[$i][0] != "0" ){
                     $return_words .= $ones_array[$number_chunk_array[$i][0]] . " hundred and ";
@@ -91,6 +88,8 @@ class NumbersToWords
                 //Tens and ones
                 if($number_chunk_array[$i][1] == 0){
                     //do nothing
+                    // $ones = $number_chunk_array[$i][2];
+                    // $return_words .= $ones_array[$ones];
 
 
                 }else if ($number_chunk_array[$i][1] == 1) {
@@ -116,30 +115,19 @@ class NumbersToWords
                 //ones:
                 if($number_chunk_array[$i][0] == 0 && $number_chunk_array[$i][1] == 0 && $number_chunk_array[$i][2] == 0 ){
                     $return_words .= "";
-                }else if ($number_chunk_array[$i][0] == 0 && $number_chunk_array[$i][1] == 0){
+                    $check_if_not_zero = false;
+                }else if ($number_chunk_array[$i][1] == 0){
                     $ones = $number_chunk_array[$i][2];
                     $return_words .= $ones_array[$ones];
                 }
                 //More than thousands
-                $return_words .= $concat_array[$digitSet];
+                if($check_if_not_zero){
+                    $return_words .= $concat_array[$digitSet];
+                }
                 $digitSet--;
         }
         echo $return_words;
         return $return_words;
-        //
-        // 444
-        // four hundred fourty four
-        //
-        // 220
-        // two hundred twenty
-        // 330 220
-        //
-        // 113
-        // one hundred thirteen
-
-
-
-
     }
 
 }

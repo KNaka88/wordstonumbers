@@ -8,7 +8,7 @@
         function test_numbers_to_words_unshift()
         {
             //Arrange
-            $user_input = 1234567;
+            $user_input = 20;
             $test_numbers_to_words = new NumbersToWords($user_input);
 
 
