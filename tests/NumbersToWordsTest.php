@@ -8,7 +8,7 @@
         function test_numbers_to_words_unshift()
         {
             //Arrange
-            $user_input = 878789423;
+            $user_input = 1234567;
             $test_numbers_to_words = new NumbersToWords($user_input);
 
 
@@ -16,7 +16,7 @@
             $result = $test_numbers_to_words->numbers_to_words();
 
             //Assert
-            $this->assertEquals('four thousand one hundred and twenty two', $result);
+            $this->assertEquals("", $result);
 
         }
 

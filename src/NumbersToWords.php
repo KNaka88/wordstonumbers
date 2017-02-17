@@ -77,12 +77,10 @@ class NumbersToWords
         $number_chunk_array = array_chunk($split_array, 3);
 
 
-
+        $digitSet = count($number_chunk_array);
 
         for($i=0; $i<count($number_chunk_array); $i++){
 
-                //More than thousands
-                $return_words .= $concat_array[$i+1];
 
                 //Hundreds
                 if($number_chunk_array[$i][0] != "0" ){
@@ -122,6 +120,9 @@ class NumbersToWords
                     $ones = $number_chunk_array[$i][2];
                     $return_words .= $ones_array[$ones];
                 }
+                //More than thousands
+                $return_words .= $concat_array[$digitSet];
+                $digitSet--;
         }
         echo $return_words;
         return $return_words;
